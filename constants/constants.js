@@ -47,8 +47,8 @@ export const CONTACTS = {
   PHONE: '+91 9739304928',
 };
 export const SOCIAL_LINKS = {
-  GITHUB: 'https://github.com/osamajavaid',
-  LINKEDIN: 'https://www.linkedin.com/in/iosamajavaid/',
-  TWITTER: 'https://twitter.com/iosamajavaid',
-  FACEBOOK: 'https://www.facebook.com/iosamajavaid',
+  GITHUB: '',
+  LINKEDIN: '',
+  TWITTER: '',
+  FACEBOOK: '',
 };
