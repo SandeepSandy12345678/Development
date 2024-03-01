@@ -16,35 +16,35 @@ const Contact = () => {
     const [isError, setIsError] = useState(false);
   
     const handleSubmit = async (event) => {
-      event.preventDefault();
-  
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name: event.target.name.value,
-            email: event.target.email.value,
-            message: event.target.message.value,
-          }),
-        });
-  
-        const data = await response.json();
-  
-        if (response.ok && data.success) {
-          // Handle success, show a success message or redirect
-          setIsSuccess(true);
-        } else {
-          // Handle error, show an error message
+        event.preventDefault();
+      
+        try {
+          const response = await fetch('/api/submitForm', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: event.target.name.value,
+              email: event.target.email.value,
+              message: event.target.message.value,
+            }),
+          });
+      
+          const data = await response.json();
+      
+          if (response.ok && data.success) {
+            // Handle success, show a success message or redirect
+            setIsSuccess(true);
+          } else {
+            // Handle error, show an error message
+            setIsError(true);
+          }
+        } catch (error) {
+          // Handle unexpected errors
           setIsError(true);
         }
-      } catch (error) {
-        // Handle unexpected errors
-        setIsError(true);
-      }
-    };
+      };
 
 
     return (
