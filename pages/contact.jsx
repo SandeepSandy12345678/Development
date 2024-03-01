@@ -12,6 +12,41 @@ import { CONTACTS, DETAILS, SOCIAL_LINKS } from '../constants/constants';
 const Contact = () => {
     const [isOpen, setIsOpen] = useState(false)
 
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [isError, setIsError] = useState(false);
+  
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+  
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: event.target.name.value,
+            email: event.target.email.value,
+            message: event.target.message.value,
+          }),
+        });
+  
+        const data = await response.json();
+  
+        if (response.ok && data.success) {
+          // Handle success, show a success message or redirect
+          setIsSuccess(true);
+        } else {
+          // Handle error, show an error message
+          setIsError(true);
+        }
+      } catch (error) {
+        // Handle unexpected errors
+        setIsError(true);
+      }
+    };
+
+
     return (
         <BannerLayout>
             <div className=" px-4 py-2">
@@ -62,9 +97,9 @@ const Contact = () => {
                     <h1 className='text-lg font-bold'>Get In Touch</h1>
                     <div className="mt-4 py-8 px-8 bg-EveningBlack rounded-xl text-sm">
                         <div>
-                            <form
-                                action="https://formspree.io/f/mjvnrlyq"
-                                method="POST"
+                            <form onSubmit={handleSubmit}
+                                // action="https://formspree.io/f/mjvnrlyq"
+                                // method="POST"
                             >
                                 <div className="flex flex-col w-full">
                                     <div className="userIcon relative mb-6">
@@ -124,6 +159,8 @@ const Contact = () => {
                                     </button>
                                 </div>
                             </form>
+                            {isSuccess && <p>Form submitted successfully!</p>}
+      {isError && <p>Error submitting form. Please try again later.</p>}
                         </div>
                     </div>
                 </div>
