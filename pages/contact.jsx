@@ -62,36 +62,68 @@ const Contact = () => {
                     <h1 className='text-lg font-bold'>Get In Touch</h1>
                     <div className="mt-4 py-8 px-8 bg-EveningBlack rounded-xl text-sm">
                         <div>
-                            <div className="flex flex-col w-full">
-                                <div className="userIcon relative mb-6">
-                                    <div id="icon" className="absolute inset-y-0 left-0 flex items-center pl-3 text-xl pointer-events-none">
-                                        <HiUser />
+                            <form
+                                action="https://formspree.io/f/mjvnrlyq"
+                                method="POST"
+                            >
+                                <div className="flex flex-col w-full">
+                                    <div className="userIcon relative mb-6">
+                                        <div
+                                            id="icon"
+                                            className="absolute inset-y-0 left-0 flex items-center pl-3 text-xl pointer-events-none"
+                                        >
+                                            <HiUser />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="input_stylings"
+                                            placeholder="Name"
+                                            name="name"
+                                        />
                                     </div>
-                                    <input type="text" className="input_stylings" placeholder="Name" />
                                 </div>
-                            </div>
 
-                            <div className="flex flex-col w-full">
-                                <div className="mailIcon relative mb-6">
-                                    <div id="icon" className="absolute inset-y-0 left-0 flex items-center text-xl pl-3 pointer-events-none">
-                                        <HiMail />
+                                <div className="flex flex-col w-full">
+                                    <div className="mailIcon relative mb-6">
+                                        <div
+                                            id="icon"
+                                            className="absolute inset-y-0 left-0 flex items-center text-xl pl-3 pointer-events-none"
+                                        >
+                                            <HiMail />
+                                        </div>
+                                        <input
+                                            type="text"
+                                            className="input_stylings"
+                                            placeholder="Email"
+                                            name="_replyto" // Formspree uses this for the email field
+                                        />
                                     </div>
-                                    <input type="text" className="input_stylings" placeholder="Email" />
                                 </div>
-                            </div>
 
-                            <div className="flex flex-col w-full">
-                                <div className="textIcon relative mb-6">
-                                    <div id="icon" className="absolute top-3 left-0 flex items-center text-lg pl-3 pointer-events-none">
-                                        <BsChatTextFill />
+                                <div className="flex flex-col w-full">
+                                    <div className="textIcon relative mb-6">
+                                        <div
+                                            id="icon"
+                                            className="absolute top-3 left-0 flex items-center text-lg pl-3 pointer-events-none"
+                                        >
+                                            <BsChatTextFill />
+                                        </div>
+                                        <textarea
+                                            rows={6}
+                                            cols={50}
+                                            className="input_stylings"
+                                            placeholder="Message"
+                                            name="message"
+                                        />
                                     </div>
-                                    <textarea rows={6} cols={50} className="input_stylings" placeholder="Message" />
                                 </div>
-                            </div>
 
-                            <div className="my-4">
-                                <button onClick={() => setIsOpen(true)} className="button"> SEND MESSAGE </button>
-                            </div>
+                                <div className="my-4">
+                                    <button type="submit" className="button">
+                                        SEND MESSAGE
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
