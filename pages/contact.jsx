@@ -79,6 +79,9 @@ const Contact = () => {
                                             className="input_stylings"
                                             placeholder="Name"
                                             name="name"
+                                            required
+                                            min={7}
+                                            max={25}
                                         />
                                     </div>
                                 </div>
@@ -95,6 +98,7 @@ const Contact = () => {
                                             type="text"
                                             className="input_stylings"
                                             placeholder="Email"
+                                            required
                                             name="_replyto" // Formspree uses this for the email field
                                         />
                                     </div>
@@ -113,6 +117,7 @@ const Contact = () => {
                                             cols={50}
                                             className="input_stylings"
                                             placeholder="Message"
+                                            required
                                             name="message"
                                         />
                                     </div>
